@@ -13,7 +13,7 @@ This repository contains the official PyTorch implementation for the paper:
 StrokeFusion progressively generates highly structured and semantically coherent vector sketches through a reverse diffusion process. 
 
 <p align="center">
-  <img src="assets/figure2_teaser.png" alt="StrokeFusion Generation Process" width="100%">
+  <img src="assets/fig_diff_progress.png" alt="StrokeFusion Generation Process" width="100%">
 </p>
 <p align="center">
   <em><strong>Two examples of the generation process in StrokeFusion.</strong> From left to right, the noise level progressively decreases. At each timestep, only strokes with a presence confidence $\hat{v}_i > 0$ are visualized.</em>
@@ -26,7 +26,7 @@ In the field of sketch generation, raster-format-trained models often produce no
 To address these challenges, we propose **StrokeFusion**, a two-stage framework for vector sketch generation. It contains a dual-modal sketch feature learning network that maps strokes into a high-quality latent space, and a stroke-level latent diffusion model that simultaneously adjusts stroke position, scale, and trajectory during generation. This enables high-fidelity stroke generation while supporting stroke interpolation editing.
 
 <p align="center">
-  <img src="assets/figure1_pipeline.jpg" alt="StrokeFusion Pipeline" width="100%">
+  <img src="assets/pipeline.png" alt="StrokeFusion Pipeline" width="100%">
 </p>
 
 The proposed framework comprises two core components:
