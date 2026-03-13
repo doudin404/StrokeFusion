@@ -1,7 +1,7 @@
 # StrokeFusion (AAAI 2026)
 
 [![Paper](https://img.shields.io/badge/cs.CV-Paper-b31b1b?logo=arxiv&logoColor=red)](https://arxiv.org/abs/2503.23752)
-[![Project Page](https://img.shields.io/badge/Project-Page-blue)](https://doudin404.github.io/StrokeFusion/) [![Conference](https://img.shields.io/badge/AAAI-2026-4b44ce)]()
+[![Project Page](https://img.shields.io/badge/Project-Page-blue)](https://doudin404.github.io/StrokeFusion-page/) [![Conference](https://img.shields.io/badge/AAAI-2026-4b44ce)]()
 
 This repository contains the official PyTorch implementation for the paper:
 > **StrokeFusion: Vector Sketch Generation via Joint Stroke-UDF Encoding and Latent Sequence Diffusion** <br>
