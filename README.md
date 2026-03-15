@@ -99,6 +99,66 @@ Run the script to start training the diffusion model:
 python train_diff.py
 
 ```
+帮你把这句话加进去了！为了保持你这部分文档（英文 README）的语言连贯性，我用英文写了一个提示框（Tip），并放在了步骤 3 的末尾。这样读者在看完训练步骤后，能立刻知道有现成的权重可以直接用来做 Sample。
+
+你可以直接复制下面的完整内容：
+
+```markdown
+### 2. Training the Reconstruction Model (Encoder)
+
+Before training the diffusion model, you need to train the base DualModal reconstruction model.
+
+Open `train.py` and adjust the `StrokesDataModule` parameters to match your target dataset:
+
+```python
+# Inside train.py
+data_dir = "data/raw"            # Root directory of your dataset
+save_dir = "data/processed"      # Directory for processed data cache
+dm = StrokesDataModule(
+    root_dir=data_dir,
+    cache_dir=save_dir,
+    data_name="tu_berlin",       # Name of the sub-folder/dataset (e.g., 'tu_berlin', 'facex')
+    data_type="svg",             # Supported formats: 'svg', 'npz', 'json'
+    path_points=64,
+    gamma=200.0,
+    display_scale=0.8,
+    batch_size=18,               # Batch size per GPU
+    num_workers=20,
+)
+
+```
+
+Run the script to start training:
+
+```bash
+python train.py
+
+```
+
+*The model checkpoints will be automatically saved in the `checkpoints/` directory.*
+
+### 3. Training the Generative Diffusion Model
+
+Once the reconstruction model is trained, you can train the latent diffusion model.
+
+Open `train_diff.py`. Ensure that the `SketchsDataModule` parameters are strictly consistent with the ones used in Step 2. Then, pass your trained checkpoint from Step 2 as the `encoder_ckpt`:
+
+```python
+# Inside train_diff.py
+# Load the pre-trained DualModalModel to serve as the encoder
+encoder_ckpt = "checkpoints/ready/best_tu_berlin.ckpt"
+encoder_model = DualModalModel.load_from_checkpoint(encoder_ckpt).eval()
+
+```
+
+Run the script to start training the diffusion model:
+
+```bash
+python train_diff.py
+
+```
+
+Pre-trained checkpoints for both models are available to download from Hugging Face at [doudin404/stroke_fusion](https://www.google.com/search?q=https://huggingface.co/doudin404/stroke_fusion).
 
 ### 4. Sampling & Generation
 
